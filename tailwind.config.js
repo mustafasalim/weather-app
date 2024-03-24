@@ -93,7 +93,7 @@ export default {
           "12px",
           {
             lineHeight: "140%",
-            fontWeight: 700,
+            fontWeight: 400,
           },
         ],
       },
