@@ -2,8 +2,8 @@ import Day from "./day"
 
 const NextDays = () => {
   return (
-    <section className="w-[22.438rem] h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
-      <div className="w-[20.938rem] h-[9.5rem] flex items-center justify-center">
+    <section className="w-full lg:h-52 h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
+      <div className="lg:w-full lg:h-full w-[20.938rem] h-[9.5rem] flex items-center justify-center">
         <Day
           day="Mon"
           icon="icon"

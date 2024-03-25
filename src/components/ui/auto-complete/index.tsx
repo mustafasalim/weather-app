@@ -1,88 +1,80 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import classnames from "classnames"
 import { SpinnerGap } from "@phosphor-icons/react"
 
 interface AutoCompleteOptions {
-  data: any
+  options: string[]
+  size?: string
 }
 
-const AutoComplete = (props: AutoCompleteOptions) => {
-  const { data } = props
+const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
+  const { options, size } = props
+  const [isFetching, setIsFetching] = useState(false)
   const [inputValue, setInputValue] = useState("")
-  const [filteredData, setfilteredData] = useState([])
-  const [showOptions, setShowOptions] = useState(false)
-  const [getRequest, setGetRequest] = useState(false)
+  const [filteredOptions, setFilteredOptions] = useState<string[]>([])
 
-  const handleChange = (e: any) => {
-    const inputValue = e.target.value
-    setInputValue(inputValue)
-    const filteredData = data?.filter((option: any) =>
-      option?.toLowerCase()?.includes(inputValue?.toLowerCase())
-    )
-
-    setShowOptions(!!inputValue)
-    if (inputValue === "") {
-      setfilteredData([])
-    } else {
-      setfilteredData(filteredData)
-    }
-    setGetRequest(false)
-  }
-  console.log(filteredData)
-
-  const handleSelect = (value: string) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
     setInputValue(value)
-    setGetRequest(true)
+    setFilteredOptions(
+      options.filter((option) =>
+        option.toLowerCase().includes(value.toLowerCase())
+      )
+    )
+  }
+  const handleOptionClick = (option: string) => {
+    setInputValue(option)
+    setFilteredOptions([])
+    setIsFetching(true)
     setTimeout(() => {
-      setGetRequest(false)
+      setIsFetching(false)
     }, 2000)
-    setShowOptions(false)
   }
 
-  const handleBlur = () => {
-    setTimeout(() => setShowOptions(false), 100)
-  }
-  console.log(inputValue)
+  const spinner = (
+    <span className="absolute top-3 right-2 animate-spin">
+      <SpinnerGap
+        className="text-product-blue-light"
+        size={32}
+      />
+    </span>
+  )
 
   return (
-    <>
+    <section className="relative">
       <div
         className={classnames("relative", {
-          "opacity-45": getRequest === true,
+          "opacity-45": isFetching,
         })}
       >
         <input
           value={inputValue}
-          onChange={handleChange}
-          onFocus={() => setShowOptions(true)}
-          onBlur={handleBlur}
+          onChange={handleInputChange}
           placeholder="Search location"
-          className="outline-none w-[311px] h-[56px] text-md rounded-lg p-4 placeholder:text-base-gray-400 text-base-gray-100 bg-base-gray-600"
+          className={classnames(
+            "outline-none lg:w-full text-md rounded-lg p-4 w-full  placeholder:text-base-gray-400 text-base-gray-100 bg-base-gray-600",
+            {
+              "lg:w-full": size === "medium",
+              "!w-[26.438rem] !h-[3.5rem]": size === "large",
+            }
+          )}
           type="text"
         />
-        {getRequest && (
-          <span className="absolute top-3 right-2 animate-spin">
-            <SpinnerGap
-              className="text-product-blue-light"
-              size={32}
-            />
-          </span>
-        )}
+        {isFetching && spinner}
       </div>
-      {showOptions && (
-        <ul className="overflow-hidden fixed mt-2 transition-all w-[311px] bg-base-gray-500 rounded-lg text-base-gray-100">
-          {filteredData.length === 0 ? (
-            <>
-              <li className="p-4 border-b border-base-gray-600 opacity-45 cursor-pointer break-words">
-                "{inputValue}" no results found
-              </li>
-            </>
+
+      {inputValue.length > 0 && (
+        <ul className="overflow-hidden absolute top-16 transition-all w-full bg-base-gray-500 rounded-lg text-base-gray-100">
+          {filteredOptions.length === 0 ? (
+            <li className="p-4 border-b border-base-gray-600 opacity-45 cursor-pointer break-words">
+              "{inputValue}" no results found
+            </li>
           ) : (
             <>
-              {filteredData.map((option, index) => (
+              {filteredOptions.map((option, index) => (
                 <li
                   key={index}
-                  onClick={() => handleSelect(option)}
+                  onClick={() => handleOptionClick(option)}
                   className="p-4 border-b border-base-gray-600 cursor-pointer"
                 >
                   {option}
@@ -92,7 +84,7 @@ const AutoComplete = (props: AutoCompleteOptions) => {
           )}
         </ul>
       )}
-    </>
+    </section>
   )
 }
 

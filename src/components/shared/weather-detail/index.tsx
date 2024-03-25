@@ -9,8 +9,8 @@ import {
 
 const WeatherDetail = () => {
   return (
-    <section className="w-[22.438rem] h-[18.25rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
-      <div className="w-[20.438rem] h-[17.75rem] overflow-hidden">
+    <section className=" w-full sm:h-full  h-[18.25rem] p-2 bg-base-gray-800 rounded-xl flex items-center justify-center">
+      <div className="lg:h-full lg:flex lg:flex-col lg:items-start lg:w-full lg:gap-x-8 lg:p-1 w-[20.438rem] h-[17.75rem]">
         <WeatherDetailItem
           icon={
             <ThermometerSimple
