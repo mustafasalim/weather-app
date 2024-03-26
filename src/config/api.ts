@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const BASE_URL = "https://api.openweathermap.org/data/2.5"
-const API_KEY = "a1ea7eb8da313ba21e69591392e42c83"
+const BASE_URL = "https://api.openweathermap.org"
+const API_KEY = "da043207154dbe698034acd833f5c026"
 
 const baseUrl = axios.create({
   baseURL: BASE_URL,
@@ -16,24 +16,19 @@ const baseUrl = axios.create({
 interface apiOptions {
   method: string
   url: string
-  city?: string
+  params?: any
+  data?: any
 }
 
 export const api = async (param: apiOptions) => {
-  const { method, url, city } = param
+  const { method, url, params, data } = param
 
-  try {
-    const response = await baseUrl({
-      method,
-      url,
-      params: {
-        q: city,
-      },
-    })
+  const response = await baseUrl({
+    method,
+    url,
+    params,
+    data,
+  })
 
-    return response
-  } catch (error) {
-    console.log(error)
-    throw error
-  }
+  return response
 }

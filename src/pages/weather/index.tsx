@@ -1,15 +1,39 @@
+import { useQuery } from "react-query"
 import CurrentWeather from "../../components/shared/current-weather"
 import NextDays from "../../components/shared/next-days"
 import WeatherDetail from "../../components/shared/weather-detail"
 import Header from "./header"
-import { useQuery } from "react-query"
-import { getWeatherData } from "../../services/weather-services"
+import { getCall, getCurrentWeather } from "../../services/weather-services"
+import { useEffect } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import { useWeatherStore } from "../../store/current-weather-store"
+
 0
 const Weather = () => {
-  const { data, isLoading, isError } = useQuery("current", () =>
-    getWeatherData({ city: "london" })
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const { setCurrentWeather } = useWeatherStore()
+  const lat = searchParams.get("lat")
+  const lon = searchParams.get("lon")
+
+  const { data, refetch } = useQuery("current-weather", () =>
+    getCurrentWeather(lat, lon)
   )
-  console.log(data)
+  useEffect(() => {
+    if (data) {
+      setCurrentWeather(data)
+    }
+  }, [data])
+
+  useEffect(() => {
+    if (!lat && !lon) {
+      navigate("/")
+    }
+  }, [])
+
+  useEffect(() => {
+    refetch()
+  }, [lat, lon])
 
   return (
     <section className="w-full h-screen overflow-y-auto bg-base-gray-900 p-2 flex flex-col gap-y-2">

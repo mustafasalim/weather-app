@@ -1,34 +1,49 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import classnames from "classnames"
 import { SpinnerGap } from "@phosphor-icons/react"
 
+interface Option {
+  label: string
+  value: any
+}
+
 interface AutoCompleteOptions {
-  options: string[]
   size?: string
+  options?: Option[]
+  onSelect?: (value: Option) => void
+  onInputValueChange?: (value: string) => void
 }
 
 const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
-  const { options, size } = props
-  const [isFetching, setIsFetching] = useState(false)
-  const [inputValue, setInputValue] = useState("")
-  const [filteredOptions, setFilteredOptions] = useState<string[]>([])
+  // props
+  const { options = [], size, onSelect, onInputValueChange } = props
+
+  //all states
+  const [search, setSearch] = useState<string>("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [filteredOptions, setFilteredOptions] = useState<Option[]>(
+    options.slice()
+  )
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
-    setInputValue(value)
+    setSearch(value)
     setFilteredOptions(
       options.filter((option) =>
-        option.toLowerCase().includes(value.toLowerCase())
+        option.label.toLowerCase().includes(value.toLowerCase())
       )
     )
+    onInputValueChange && onInputValueChange(value)
   }
-  const handleOptionClick = (option: string) => {
-    setInputValue(option)
+  const handleOptionClick = (option: Option) => {
+    // setSearch(option)
     setFilteredOptions([])
-    setIsFetching(true)
+    setIsLoading(true)
+    onSelect && onSelect(option)
     setTimeout(() => {
-      setIsFetching(false)
-    }, 2000)
+      setIsLoading(false)
+      setSearch("")
+    }, 450)
   }
 
   const spinner = (
@@ -40,15 +55,19 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
     </span>
   )
 
+  useEffect(() => {
+    setFilteredOptions(options)
+  }, [options])
+
   return (
     <section className="relative">
       <div
         className={classnames("relative", {
-          "opacity-45": isFetching,
+          "opacity-45": isLoading,
         })}
       >
         <input
-          value={inputValue}
+          value={search}
           onChange={handleInputChange}
           placeholder="Search location"
           className={classnames(
@@ -60,14 +79,14 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
           )}
           type="text"
         />
-        {isFetching && spinner}
+        {isLoading && spinner}
       </div>
 
-      {inputValue.length > 0 && (
+      {search.length > 0 && (
         <ul className="overflow-hidden absolute top-16 transition-all w-full bg-base-gray-500 rounded-lg text-base-gray-100">
           {filteredOptions.length === 0 ? (
             <li className="p-4 border-b border-base-gray-600 opacity-45 cursor-pointer break-words">
-              "{inputValue}" no results found
+              "{search}" no results found
             </li>
           ) : (
             <>
@@ -75,9 +94,9 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
                 <li
                   key={index}
                   onClick={() => handleOptionClick(option)}
-                  className="p-4 border-b border-base-gray-600 cursor-pointer"
+                  className="p-4 border-b border-base-gray-600 cursor-pointer hover:opacity-55 transition-all"
                 >
-                  {option}
+                  {option.label}
                 </li>
               ))}
             </>

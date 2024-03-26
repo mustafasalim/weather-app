@@ -1,4 +1,4 @@
-import AutoComplete from "../../components/ui/auto-complete"
+import SuggestionAutocomplete from "../../components/shared/suggestion-autocomplete"
 import Logo from "../../components/ui/logo"
 
 const Home = () => {
@@ -18,10 +18,7 @@ const Home = () => {
           </h2>
         </div>
         <div className="z-10">
-          <AutoComplete
-            size="large"
-            options={["mustafa", "fawfaw", "f1"]}
-          />
+          <SuggestionAutocomplete size="large" />
         </div>
       </div>
     </div>
