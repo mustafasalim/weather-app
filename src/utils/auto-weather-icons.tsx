@@ -2,6 +2,7 @@ import ClearDay from "../icons/clear-day"
 import ClearNight from "../icons/clear-night"
 import CloudyDay from "../icons/cloudy-day"
 import CloudyNight from "../icons/cloudy-night"
+import FewCloudsDay from "../icons/few-clouds-day"
 import FewCloudsNight from "../icons/few-clouds-night"
 import RainDay from "../icons/rain-day"
 import RainNight from "../icons/rain-night"
@@ -21,37 +22,45 @@ const AutoIcon = (weatherCondition: AutoIconOptions) => {
   const isDaytime = currentTime > sunrise && currentTime < sunset
   let icon
 
-  if (isDaytime || null) {
+  console.log(sunrise, sunset)
+
+  if (isDaytime || sunrise === undefined || sunset === undefined) {
     switch (path) {
       case "Clear":
         icon = <ClearDay />
         break
       case "Clouds":
+        icon = <FewCloudsDay />
+        break
+      case "Mist":
+        icon = <CloudyDay />
+        break
+      case "Drizzle":
         icon = <CloudyDay />
         break
       case "Rain":
         icon = <RainDay />
         break
-      case "thunderstorm":
+      case "Thunderstorm":
         icon = <StormDay />
-        break
-      case "Fog":
-        icon = <CloudyDay />
-        break
-      case "Mist":
-        icon = <CloudyDay />
         break
       case "Snow":
         icon = <Snow />
         break
-
+      case "Smoke":
+        icon = <CloudyDay />
+        break
+      case "Haze":
+        icon = <CloudyDay />
+        break
+      case "Fog":
+        icon = <CloudyDay />
+        break
+      case "Squall":
+        icon = <StormDay />
+        break
       default:
-        icon = (
-          <img
-            src="default-icon.svg"
-            alt="Default"
-          />
-        )
+        icon = <FewCloudsNight />
         break
     }
   } else {
@@ -62,29 +71,35 @@ const AutoIcon = (weatherCondition: AutoIconOptions) => {
       case "Clouds":
         icon = <FewCloudsNight />
         break
+      case "Mist":
+        icon = <CloudyNight />
+        break
+      case "Drizzle":
+        icon = <CloudyNight />
+        break
       case "Rain":
         icon = <RainNight />
         break
-      case "thunderstorm":
+      case "Thunderstorm":
         icon = <StormNight />
-        break
-      case "Fog":
-        icon = <CloudyNight />
-        break
-      case "Mist":
-        icon = <CloudyNight />
         break
       case "Snow":
         icon = <Snow />
         break
-
+      case "Smoke":
+        icon = <CloudyNight />
+        break
+      case "Haze":
+        icon = <CloudyNight />
+        break
+      case "Fog":
+        icon = <CloudyNight />
+        break
+      case "Squall":
+        icon = <StormNight />
+        break
       default:
-        icon = (
-          <img
-            src="default-icon.svg"
-            alt="Default"
-          />
-        )
+        icon = <FewCloudsNight />
         break
     }
   }

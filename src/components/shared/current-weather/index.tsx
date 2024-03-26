@@ -69,7 +69,7 @@ const CurrentWeather = () => {
                   <AutoIcon
                     sunrise={data?.sys?.sunrise}
                     sunset={data?.sys?.sunset}
-                    path={data.weather[0].main}
+                    path={data?.weather[0].main}
                   />
                 </div>
               )}

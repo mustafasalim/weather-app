@@ -10,31 +10,37 @@ export const getBackgroundImageUrl = (weatherCondition: any) => {
         icon = "./images/bg-images/clear-day.png"
         break
       case "Clouds":
+        icon = "./images/bg-images/few-clouds-day.png"
+        break
+      case "Mist":
+        icon = "./images/bg-images/cloudy-day.png"
+        break
+      case "Drizzle":
         icon = "./images/bg-images/cloudy-day.png"
         break
       case "Rain":
         icon = "./images/bg-images/rain-day.png"
         break
-      case "thunderstorm":
+      case "Thunderstorm":
         icon = "./images/bg-images/storm-day.png"
-        break
-      case "Fog":
-        icon = "./images/bg-images/cloudy-day.png"
-        break
-      case "Mist":
-        icon = "./images/bg-images/cloudy-day.png"
         break
       case "Snow":
         icon = "./images/bg-images/cloudy-day.png"
         break
-
+      case "Smoke":
+        icon = "./images/bg-images/cloudy-day.png"
+        break
+      case "Haze":
+        icon = "./images/bg-images/cloudy-day.png"
+        break
+      case "Fog":
+        icon = "./images/bg-images/cloudy-day.png"
+        break
+      case "Squall":
+        icon = "./images/bg-images/storm-day.png"
+        break
       default:
-        icon = (
-          <img
-            src="default-icon.svg"
-            alt="Default"
-          />
-        )
+        icon = "./images/bg-images/few-clouds-day.png"
         break
     }
   } else {
@@ -45,28 +51,35 @@ export const getBackgroundImageUrl = (weatherCondition: any) => {
       case "Clouds":
         icon = "./images/bg-images/few-clouds-night.png"
         break
-      case "Rain":
-        icon = "./images/bg-images/rain-night"
-        break
-      case "thunderstorm":
-        icon = "./images/bg-images/storm-night.png"
-        break
-      case "Fog":
-        icon = "./images/bg-images/cloudy-night.png"
-        break
       case "Mist":
         icon = "./images/bg-images/cloudy-night.png"
+        break
+      case "Drizzle":
+        icon = "./images/bg-images/cloudy-night.png"
+        break
+      case "Rain":
+        icon = "./images/bg-images/rain-night.png"
+        break
+      case "Thunderstorm":
+        icon = "./images/bg-images/storm-night.png"
         break
       case "Snow":
         icon = "./images/bg-images/cloudy-night.png"
         break
+      case "Smoke":
+        icon = "./images/bg-images/cloudy-night.png"
+        break
+      case "Haze":
+        icon = "./images/bg-images/cloudy-night.png"
+        break
+      case "Fog":
+        icon = "./images/bg-images/cloudy-night.png"
+        break
+      case "Squall":
+        icon = "./images/bg-images/storm-night.png"
+        break
       default:
-        icon = (
-          <img
-            src="default-icon.svg"
-            alt="Default"
-          />
-        )
+        icon = "./images/bg-images/few-clouds-night.png"
         break
     }
   }
