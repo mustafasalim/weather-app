@@ -52,7 +52,7 @@ const WeatherChart = (props: WeatherChartOptions) => {
         labels: {
           show: true,
           style: {
-            colors: "#fff",
+            colors: "#BFBFD4",
           },
         },
       },
@@ -72,10 +72,6 @@ const WeatherChart = (props: WeatherChartOptions) => {
           type: "vertical",
           shadeIntensity: 0.5,
           gradientToColors: [colors],
-          inverseColors: false,
-          opacityFrom: 0.7,
-          opacityTo: 0.9,
-          stops: [0, 90, 100],
         },
       },
       markers: {
