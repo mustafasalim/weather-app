@@ -26,6 +26,7 @@ const Home = () => {
           },
           { replace: true }
         )
+        console.log("konum açık")
       }
     }
   }, [geoLocation])
