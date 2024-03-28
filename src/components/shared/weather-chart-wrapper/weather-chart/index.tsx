@@ -46,6 +46,13 @@ const WeatherChart = (props: WeatherChartOptions) => {
           show: false,
         },
         fontFamily: "Inter, sans-serif",
+        animations: {
+          enabled: true,
+          dynamicAnimation: {
+            enabled: false,
+            speed: 350,
+          },
+        },
       },
       xaxis: {
         categories: times,
@@ -72,6 +79,10 @@ const WeatherChart = (props: WeatherChartOptions) => {
           type: "vertical",
           shadeIntensity: 0.5,
           gradientToColors: [colors],
+          inverseColors: false,
+          opacityFrom: 0.7,
+          opacityTo: 0.9,
+          stops: [0, 90, 100],
         },
       },
       markers: {
