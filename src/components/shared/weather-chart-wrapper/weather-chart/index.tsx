@@ -46,9 +46,6 @@ const WeatherChart = (props: WeatherChartOptions) => {
           show: false,
         },
         fontFamily: "Inter, sans-serif",
-        animations: {
-          enabled: true,
-        },
       },
       xaxis: {
         categories: times,
