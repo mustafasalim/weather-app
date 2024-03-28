@@ -48,10 +48,6 @@ const WeatherChart = (props: WeatherChartOptions) => {
         fontFamily: "Inter, sans-serif",
         animations: {
           enabled: true,
-          dynamicAnimation: {
-            enabled: true,
-            speed: 350,
-          },
         },
       },
       xaxis: {
