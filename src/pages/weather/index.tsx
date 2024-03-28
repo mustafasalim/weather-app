@@ -7,7 +7,6 @@ import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useWeatherStore } from "../../store/current-weather-store"
 import WeatherChartWrapper from "../../components/shared/weather-chart-wrapper"
-import { Toaster } from "react-hot-toast"
 import ErrorBoundary from "../../error-boundry"
 import { autoAlertMessage } from "../../utils/auto-alert-message"
 import WeatherDetail from "../../components/shared/weather-detail"
@@ -15,6 +14,7 @@ import WeatherDetail from "../../components/shared/weather-detail"
 const Weather = () => {
   const [searchParams] = useSearchParams()
   const { setCurrentWeather } = useWeatherStore()
+
   //retrieves lat and lon values
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
@@ -44,6 +44,7 @@ const Weather = () => {
     <>
       <section className="w-full h-screen overflow-auto bg-base-gray-900 p-2 flex flex-col gap-y-2">
         <Header />
+
         <div className="grid  grid-cols-12 gap-2">
           <div className="col-span-12 sm:col-span-8">
             <ErrorBoundary>
@@ -72,16 +73,6 @@ const Weather = () => {
           </ErrorBoundary>
         </div>
       </section>
-      <Toaster
-        position="top-center"
-        reverseOrder={true}
-        toastOptions={{
-          style: {
-            background: "#22222F",
-            color: "#FAFAFA",
-          },
-        }}
-      />
     </>
   )
 }

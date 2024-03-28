@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import classnames from "classnames"
-import { SpinnerGap } from "@phosphor-icons/react"
+import { Option, SpinnerGap } from "@phosphor-icons/react"
+import GeoLocation from "../../shared/geo-location"
 
 interface Option {
   label: string
@@ -35,15 +36,20 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
     )
     onInputValueChange && onInputValueChange(value)
   }
-  const handleOptionClick = (option: Option) => {
-    // setSearch(option)
+
+  const closeOptions = () => {
     setFilteredOptions([])
     setIsLoading(true)
-    onSelect && onSelect(option)
     setTimeout(() => {
       setIsLoading(false)
       setSearch("")
-    }, 450)
+    }, 350)
+  }
+  const handleOptionClick = (option: Option) => {
+    // setSearch(option)
+
+    onSelect && onSelect(option)
+    closeOptions()
   }
 
   const spinner = (
@@ -90,6 +96,9 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
             </li>
           ) : (
             <>
+              <div onClick={() => closeOptions()}>
+                <GeoLocation />
+              </div>
               {filteredOptions.map((option, index) => (
                 <li
                   key={index}

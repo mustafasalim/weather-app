@@ -1,35 +1,8 @@
-import { useEffect } from "react"
+import GeoLocation from "../../components/shared/geo-location"
 import SuggestionAutocomplete from "../../components/shared/suggestion-autocomplete"
 import Logo from "../../components/ui/logo"
-import { useNavigate } from "react-router-dom"
-import { useGeolocation } from "react-use"
 
 const Home = () => {
-  // retrieves location information if user location is turned on
-  const geoLocation = useGeolocation()
-  //routing process
-  const navigate = useNavigate()
-
-  // query by location if user location is turned on
-  useEffect(() => {
-    if (geoLocation && !geoLocation.error) {
-      if (geoLocation.latitude !== null && geoLocation.longitude !== null) {
-        const searchParams = new URLSearchParams()
-        //updates search parameters
-        searchParams.set("lat", geoLocation.latitude.toString())
-        searchParams.set("lon", geoLocation.longitude.toString())
-
-        navigate(
-          {
-            pathname: "/weather",
-            search: searchParams.toString(),
-          },
-          { replace: true }
-        )
-        console.log("konum açık")
-      }
-    }
-  }, [geoLocation])
   return (
     <div className="w-full h-screen bg-home-background bg-cover bg-center flex flex-col gap-y-32">
       <div className="w-full h-40 flex items-center justify-center">
@@ -45,6 +18,7 @@ const Home = () => {
             Choose a location to see the weather forecast
           </h2>
         </div>
+        <GeoLocation />
         <div className="z-10">
           <SuggestionAutocomplete size="large" />
         </div>
