@@ -19,7 +19,7 @@ const Home = () => {
           </h2>
         </div>
         <GeoLocation />
-        <div className="z-10">
+        <div className=" w-full flex items-center justify-center">
           <SuggestionAutocomplete size="large" />
         </div>
       </div>

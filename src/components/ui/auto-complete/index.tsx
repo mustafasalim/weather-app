@@ -80,7 +80,8 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
             "outline-none lg:w-full text-md rounded-lg p-4 w-full  placeholder:text-base-gray-400 text-base-gray-100 bg-base-gray-600",
             {
               "lg:w-full": size === "medium",
-              "!w-[26.438rem] !h-[3.5rem]": size === "large",
+              "lg:!w-[26.438rem]  lg:!h-[3.5rem] !w-[19.438rem] !h-[3.5rem]":
+                size === "large",
             }
           )}
           type="text"
