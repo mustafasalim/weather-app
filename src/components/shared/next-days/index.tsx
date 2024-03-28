@@ -15,9 +15,6 @@ const NextDays = () => {
   )
 
   const list = data && data.list.slice(0, 5).map((res: any) => res)
-  console.log(list)
-
-  console.log(getDaysOfWeek())
 
   useEffect(() => {
     refetch()
@@ -25,7 +22,7 @@ const NextDays = () => {
 
   return (
     <section className="w-full lg:h-52 h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
-      <div className="lg:w-full lg:h-full w-[20.938rem] h-[9.5rem] flex items-center justify-center">
+      <div className="lg:w-full lg:h-full flex items-center  overflow-x-auto">
         {data &&
           list.map((item: any, idx: any) => (
             <Day

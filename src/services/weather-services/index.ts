@@ -1,5 +1,6 @@
 import { api } from "../../config/api"
 
+//current weather api
 export const getCurrentWeather = async (lat: any, lon: any) => {
   const response = await api({
     method: "get",
@@ -13,6 +14,7 @@ export const getCurrentWeather = async (lat: any, lon: any) => {
   return response.data
 }
 
+//5-day and 5-hour api
 export const getCallFiveDaysForecast = async (lat: any, lon: any) => {
   const response = await api({
     method: "get",
@@ -26,6 +28,7 @@ export const getCallFiveDaysForecast = async (lat: any, lon: any) => {
   return response.data
 }
 
+//geolocation api
 export const getGeo = async (city: any) => {
   const response = await api({
     method: "get",

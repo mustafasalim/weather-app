@@ -1,8 +1,10 @@
 import axios from "axios"
 
+//BASE_URL AND API_KEY
 const BASE_URL = "https://api.openweathermap.org"
 const API_KEY = "da043207154dbe698034acd833f5c026"
 
+//create base url with axios create
 const baseUrl = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -13,6 +15,7 @@ const baseUrl = axios.create({
   },
 })
 
+//apiOptions interface
 interface apiOptions {
   method: string
   url: string
@@ -20,6 +23,7 @@ interface apiOptions {
   data?: any
 }
 
+//general api
 export const api = async (param: apiOptions) => {
   const { method, url, params, data } = param
 

@@ -16,6 +16,10 @@ export const routes = createBrowserRouter([
         path: "/weather",
         element: <Weather />,
       },
+      {
+        path: "*",
+        element: "not",
+      },
     ],
   },
 ])

@@ -22,8 +22,6 @@ const AutoIcon = (weatherCondition: AutoIconOptions) => {
   const isDaytime = currentTime > sunrise && currentTime < sunset
   let icon
 
-  console.log(sunrise, sunset)
-
   if (isDaytime || sunrise === undefined || sunset === undefined) {
     switch (path) {
       case "Clear":

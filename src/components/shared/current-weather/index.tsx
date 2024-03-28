@@ -21,8 +21,6 @@ const CurrentWeather = () => {
     }
   }, [data])
 
-  console.log(data)
-
   return (
     <section className="w-full p-3 h-full bg-base-gray-800 rounded-xl">
       {data.weather && data.weather.length > 0 && (

@@ -22,7 +22,7 @@ const WeatherChart = (props: WeatherChartOptions) => {
         offsetY: -13,
         offsetX: 0,
         style: {
-          fontSize: "14px",
+          fontSize: "12px",
           colors: ["#BFBFD4"],
         },
         background: {

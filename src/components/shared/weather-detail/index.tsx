@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom"
 import WeatherDetailItem from "./weather-detail-item"
 import {
   ThermometerSimple,
@@ -6,8 +7,24 @@ import {
   Wind,
   Sun,
 } from "@phosphor-icons/react"
+import { useQuery } from "react-query"
+import { useEffect } from "react"
+import { getCallFiveDaysForecast } from "../../../services/weather-services"
 
 const WeatherDetail = () => {
+  const [searchParams] = useSearchParams()
+  const lat = searchParams.get("lat")
+  const lon = searchParams.get("lon")
+  const { data, refetch } = useQuery("one-call", () =>
+    getCallFiveDaysForecast(lat, lon)
+  )
+
+  const list = data && data.list.slice(0, 1).map((item: any) => item && item)
+
+  useEffect(() => {
+    refetch()
+  }, [lat, lon])
+
   return (
     <section className=" w-full sm:h-full  h-[19.25rem] p-2 bg-base-gray-800 rounded-xl flex items-center justify-center">
       <div className="lg:h-full lg:flex lg:flex-col lg:items-start lg:w-full lg:gap-x-8 lg:p-1 w-[20.438rem] h-[17.75rem]">
@@ -19,7 +36,7 @@ const WeatherDetail = () => {
             />
           }
           title="Thermal sensation"
-          value="26ºc"
+          value={Math.floor(list && list[0]?.main?.feels_like) + "ºc"}
         />
         <WeatherDetailItem
           icon={
@@ -29,7 +46,7 @@ const WeatherDetail = () => {
             />
           }
           title="Probability of rain"
-          value="0%"
+          value={Math.floor(list && list[0]?.pop) + "%"}
         />
         <WeatherDetailItem
           icon={
@@ -39,7 +56,7 @@ const WeatherDetail = () => {
             />
           }
           title="Wind speed"
-          value="8 km/h"
+          value={Math.floor(list && list[0]?.wind?.speed) + "km/h"}
         />
         <WeatherDetailItem
           icon={

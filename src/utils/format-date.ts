@@ -12,7 +12,3 @@ export function formatDate(dateString?: string): string {
   )
   return dateFormatter.format(date)
 }
-
-console.log(formatDate("2023-05-15"))
-
-console.log(formatDate())

@@ -57,7 +57,7 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
 
   useEffect(() => {
     setFilteredOptions(options)
-  }, [options])
+  }, [onInputValueChange])
 
   return (
     <section className="relative">
@@ -84,7 +84,7 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
 
       {search.length > 0 && (
         <ul className="overflow-hidden absolute top-16 transition-all w-full bg-base-gray-500 rounded-lg text-base-gray-100">
-          {filteredOptions.length === 0 ? (
+          {options.length === 0 ? (
             <li className="p-4 border-b border-base-gray-600 opacity-45 cursor-pointer break-words">
               "{search}" no results found
             </li>
