@@ -45,7 +45,7 @@ const WeatherChartWrapper = () => {
         onSelect={(index) => setSelectedIndex(index)}
         className="w-full h-full p-2 bg-base-gray-800 rounded-lg overflow-hidden"
       >
-        <TabList className="flex gap-x-2 border-b border-base-gray-600 lg:text-heading-sm text-heading-xs text-base-gray-200 cursor-pointer">
+        <TabList className="flex gap-x-2 border-base-gray-600 lg:text-heading-sm text-heading-xs text-base-gray-200 cursor-pointer">
           <Tab className={tabClass(0)}>
             <span>Thermal sensation</span>
           </Tab>
