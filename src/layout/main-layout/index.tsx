@@ -6,7 +6,7 @@ const MainLayout = () => {
     <section className="font-nunito">
       <Outlet />
       <Toaster
-        position="top-center"
+        position="bottom-right"
         reverseOrder={true}
       />
     </section>
