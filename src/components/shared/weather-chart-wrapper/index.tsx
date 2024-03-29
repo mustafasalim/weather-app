@@ -31,8 +31,10 @@ const WeatherChartWrapper = () => {
   }, [lat, lon])
 
   const tabClass = (index: number) =>
-    `py-2 px-4 border-b-4 flex items-center text-ellipsis justify-center ${
-      selectedIndex === index ? "border-blue-500" : "border-transparent"
+    `py-2 px-4 border-b-4 flex items-center text-ellipsis justify-center  ${
+      selectedIndex === index
+        ? "border-blue-500 outline-none"
+        : "border-transparent"
     } hover:border-blue-500 focus:border-blue-500`
 
   return (

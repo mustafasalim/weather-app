@@ -97,9 +97,6 @@ export default {
           },
         ],
       },
-      backgroundImage: {
-        "home-background": "url('./images/home-background.png')",
-      },
     },
   },
   plugins: [],
