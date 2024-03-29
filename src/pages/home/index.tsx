@@ -4,7 +4,12 @@ import Logo from "../../components/ui/logo"
 
 const Home = () => {
   return (
-    <div className="w-full h-screen bg-[url('./images/bg-images/home-bg-image.png')] bg-cover bg-center flex flex-col gap-y-32">
+    <div className="relative w-full h-screen overflow-hidden flex flex-col gap-y-32">
+      <img
+        className="absolute top-0 left-0 -z-10 object-cover w-full h-full flex"
+        src="./images/bg-images/home-bg-image.png"
+        alt=""
+      />
       <div className="w-full h-40 flex items-center justify-center">
         <Logo />
       </div>
