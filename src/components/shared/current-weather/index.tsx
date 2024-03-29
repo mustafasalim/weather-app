@@ -45,7 +45,7 @@ const CurrentWeather = () => {
           {data && (
             <div className="w-full flex items-center justify-between">
               <div className="pl-6">
-                <div className="flex flex-col justify-center gap-y-2">
+                <div className=" flex flex-col justify-center gap-y-2">
                   <div className="lg:text-heading-hg text-heading-xl text-base-white">
                     {Math.floor(data?.main?.temp)}ºc
                   </div>
@@ -63,7 +63,7 @@ const CurrentWeather = () => {
                 </div>
               </div>
               {data.weather && data.weather.length > 0 && (
-                <div className="w-[20rem] flex items-center justify-start">
+                <div className="w-[20rem] flex items-center justify-end">
                   <AutoIcon
                     sunrise={data?.sys?.sunrise}
                     sunset={data?.sys?.sunset}
