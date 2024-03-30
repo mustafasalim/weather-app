@@ -1,6 +1,6 @@
 # Weather App
 
-##### Bu projede, openweather api kullanılarak hava durumu uygulaması geliştirdim.Bu uygulamayı yaparken önceliğim responsive ve kullanıcı dostu bi uygulama yapmaktı.Uygulama içersinde aynı zamanda güncel hava durumu bilgilerine göre kullanıcıya bilgilendirme mesajları,eger kullanıcı konumu açıksa mevcut konuma göre güncel hava durumu bilgileri,kullanıcının girdigi kelimelere göre şehirlerin listelenmesi,Sıcaklık,nem ve rüzgar hızının kullanıcıya grafikler aracılıyla gösterilmesi gibi pek çok özellik bulunmaktadır.
+Bu projede, openweather api kullanılarak hava durumu uygulaması geliştirdim.Bu uygulamayı yaparken önceliğim responsive ve kullanıcı dostu bi uygulama yapmaktı.Uygulama içersinde aynı zamanda güncel hava durumu bilgilerine göre kullanıcıya bilgilendirme mesajları,eger kullanıcı konumu açıksa mevcut konuma göre güncel hava durumu bilgileri,kullanıcının girdigi kelimelere göre şehirlerin listelenmesi,Sıcaklık,nem ve rüzgar hızının kullanıcıya grafikler aracılıyla gösterilmesi gibi pek çok özellik bulunmaktadır.
 
 ## Uygulama Linki
 
