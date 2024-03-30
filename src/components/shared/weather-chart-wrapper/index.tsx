@@ -1,22 +1,21 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs"
 import WeatherChart from "./weather-chart"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useQuery } from "react-query"
 import { getCallFiveDaysForecast } from "../../../services/weather-services"
 
 const WeatherChartWrapper = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
+
   const [searchParams] = useSearchParams()
-  //retrieves lat and lon values
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
-  //5 roses brings forecast weather data
-  const { data, refetch } = useQuery("call-five-forecast", () =>
+
+  const { data, refetch } = useQuery("call-forecast", () =>
     getCallFiveDaysForecast(lat, lon)
   )
 
-  //freezes hourly temperatures, wind speeds and humidity
   const temperature =
     data && data.list.slice(0, 7).map((res: any) => Math.floor(res?.main?.temp))
   const windSpeed =
@@ -31,11 +30,15 @@ const WeatherChartWrapper = () => {
   }, [lat, lon])
 
   const tabClass = (index: number) =>
-    `py-2 px-4 border-b-4 flex items-center text-ellipsis justify-center  ${
+    `py-2 px-4 border-b-2 flex items-center text-ellipsis justify-center ${
       selectedIndex === index
         ? "border-blue-500 outline-none"
         : "border-transparent"
-    } hover:border-blue-500 focus:border-blue-500`
+    }`
+
+  const handleSelect = (index: number) => {
+    setSelectedIndex(index)
+  }
 
   return (
     <div>
@@ -44,7 +47,7 @@ const WeatherChartWrapper = () => {
         disableUpDownKeys
         selectedIndex={selectedIndex}
         scrolling="enabled"
-        onSelect={(index) => setSelectedIndex(index)}
+        onSelect={handleSelect}
         className="w-full h-full p-2 bg-base-gray-800 rounded-lg overflow-hidden"
       >
         <TabList className="flex gap-x-2 border-base-gray-600 lg:text-heading-sm text-heading-xs text-base-gray-200 cursor-pointer">

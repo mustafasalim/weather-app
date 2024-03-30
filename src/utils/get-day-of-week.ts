@@ -1,7 +1,7 @@
-export function getDaysOfWeek() {
-  const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Sun"]
+export const getDaysOfWeek = () => {
+  const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
-  const dayInAweek = new Date().getDate()
+  const dayInAweek = new Date().getDay()
   const forecastDays = daysOfWeek
     .slice(dayInAweek, daysOfWeek.length)
     .concat(daysOfWeek.slice(0, dayInAweek))

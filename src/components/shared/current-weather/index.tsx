@@ -21,6 +21,8 @@ const CurrentWeather = () => {
     }
   }, [data])
 
+  console.log(data)
+
   return (
     <section className="w-full p-3 h-full bg-base-gray-800 rounded-xl">
       {data.weather && data.weather.length > 0 && (
@@ -51,8 +53,8 @@ const CurrentWeather = () => {
                   </div>
                   <div>
                     <div className="lg:text-heading-md text-heading-sm text-base-white">
-                      {Math.floor(data?.main?.temp_min)}ºc /{" "}
-                      {Math.floor(data?.main?.temp_max)}ºc
+                      <span> {Math.floor(data?.main?.temp_min)}ºc</span> /
+                      <span> {Math.floor(data?.main?.temp_max)}ºc</span>
                     </div>
                     <div className="lg:text-heading-md text-sm text-base-white">
                       {data.weather &&

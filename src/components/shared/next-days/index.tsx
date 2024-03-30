@@ -4,7 +4,8 @@ import { getCallFiveDaysForecast } from "../../../services/weather-services"
 import { useSearchParams } from "react-router-dom"
 import { getDaysOfWeek } from "../../../utils/get-day-of-week"
 import AutoIcon from "../../../utils/auto-weather-icons"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { processForecastData } from "../../../utils/process-forecast-data"
 
 const NextDays = () => {
   const [searchParams] = useSearchParams()
@@ -13,12 +14,18 @@ const NextDays = () => {
   const { data, refetch } = useQuery("call-five-forecast", () =>
     getCallFiveDaysForecast(lat, lon)
   )
-
-  const list = data && data.list.slice(0, 5).map((res: any) => res)
+  const [list, setList] = useState<any>([])
 
   useEffect(() => {
     refetch()
   }, [lat, lon])
+
+  useEffect(() => {
+    if (data) {
+      const processedData = processForecastData(data.list)
+      setList(processedData)
+    }
+  }, [data])
 
   return (
     <section className="w-full lg:h-52 h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
@@ -28,9 +35,9 @@ const NextDays = () => {
             <Day
               key={idx}
               day={getDaysOfWeek()[idx]}
-              icon={<AutoIcon path={item.weather[0].main} />}
-              tempMax={Math.floor(item.main.temp_max)}
-              temp_Min={Math.floor(item.main.temp_min)}
+              icon={<AutoIcon path={item.dailyData[0].weather[0].main} />}
+              tempMax={Math.floor(item.avgTemp)}
+              temp_Min={Math.floor(item.avgTemp)}
             />
           ))}
       </div>
