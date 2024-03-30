@@ -6,9 +6,83 @@
 
 https://weather-app-react-project-ecru.vercel.app/
 
+## Deployment
+
+Run this project for deployment
+
+```bash
+ pnpm install
+ pnpm dev
+```
+
+## Packages and Technologies
+
+- phosphor-icons/react
+- apexcharts
+- axios
+- classnames
+- framer-motion
+- react
+- react-apexcharts
+- react-dom
+- react-hot-toast
+- react-query
+- react-router-dom
+- react-tabs
+- react-use
+- zustand-
+
+## Features
+
+### Responsive Design
+
+- Responsive designs for all screens
+
+### Chart
+
+- Temperature graph: Shows the change in temperature at a given time.
+- Humidity graph: Shows the change in humidity at a given time.
+- Wind speed graph: Shows the change in wind speed at a given time.
+
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/chart.png)
+
+### Auto-complete
+
+- Brings to the relevant cities according to the user's input
+  ![Uygulama Ekran Görüntüsü](/public/images/readme-images/search.png)
+
+### Geographical Location
+
+- If the location is on, shows the current weather information for that location
+
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/search.png)
+
+## Technical Details
+
+### Weather Icons And Background Images
+
+- Shows background images and icons appropriate to the current weather and time zone
+  ![Uygulama Ekran Görüntüsü](/public/images/readme-images/current.png)
+
+### Weather messages
+
+- Informative messages appear to the user based on the current weather and time zone
+  ![Uygulama Ekran Görüntüsü](/public/images/readme-images/message.png)
+
+### Error Status
+
+- in the event of a possible error, displaying the error to the user in an appropriate manner
+  ![Uygulama Ekran Görüntüsü](/public/images/readme-images/error.png)
+
+### ErrorBoundry
+
+- Error Boundaries is a React component used to handle potential error conditions in a React application. These error boundaries catch an error when it occurs in a specific component tree of the application and allow you to handle the error without affecting the rest of the application.
+
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/Screenshot.png)
+
 ## API
 
-Bu API, Axios ve React Query kütüphanelerini kullanarak geliştirilmiş bir hava durumu bilgisi sağlayıcı sistemdir. Axios, HTTP istekleri yapmak ve almak için kullanılırken, React Query, bu istekleri yönetmek ve önbelleğe almak için kullanılır. API, kullanıcıların istedikleri şehirlerin hava durumu bilgilerini almak için bir arayüz sunar. Kullanıcılar, API'ye istek yaparak belirledikleri şehrin hava durumuyla ilgili güncel verilere erişebilirler. API, istekleri işleyerek hava durumu verilerini kaynaklardan alır, işler ve kullanıcıya JSON formatında yanıt verir. Bu API, modern web uygulamaları için hava durumu verilerine erişim sağlamak amacıyla tasarlanmıştır.
+This API is a weather information delivery system built using the Axios and React Query libraries. Axios is used to make and receive HTTP requests, while React Query is used to manage and cache these requests. The API provides an interface for users to retrieve weather information for cities of their choice. By making a request to the API, users can access up-to-date weather data for their specified city. By processing requests, the API retrieves weather data from sources, processes it and responds to the user in JSON format. This API is designed to provide access to weather data for modern web applications.
 
 ```bash
 import axios from "axios"
@@ -75,57 +149,3 @@ export const api = async (param: apiOptions) => {
 }
 
 ```
-
-## Packages and Technologies
-
-- phosphor-icons/react
-- apexcharts
-- axios
-- classnames
-- framer-motion
-- react
-- react-apexcharts
-- react-dom
-- react-hot-toast
-- react-query
-- react-router-dom
-- react-tabs
-- react-use
-- zustand-
-
-## Deployment
-
-Run this project for deployment
-
-```bash
- pnpm install
- pnpm dev
-```
-
-## Features
-
-- [@octokatherine](https://www.github.com/octokatherine) tasarım ve geliştirme için.
-
-## Ekler
-
-Herhangi bir ek bilgi buraya gelir
-
-## Rozetler
-
-[shields.io](https://shields.io/) Gibi bir yerden rozetler ekleyin.
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-
-## Katkı
-
-Katkılara her zaman açığız!
-
-Başlamak `Contributor.md'ye bakın.
-
-Lütfen bu projenin `davranış kurallarına` uyun.
-
-## Ekran Görüntüleri
-
-![Uygulama Ekran Görüntüsü](/public/images/bg-images/rain-day.png)
