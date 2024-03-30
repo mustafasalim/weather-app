@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import Day from "./day"
-import { getCallFiveDaysForecast } from "../../../services/weather-services"
+import { getForecast } from "../../../services/weather-services"
 import { useSearchParams } from "react-router-dom"
 import { getDaysOfWeek } from "../../../utils/get-day-of-week"
 import AutoIcon from "../../../utils/auto-weather-icons"
@@ -12,14 +12,14 @@ const NextDays = () => {
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
   const { data, refetch } = useQuery("call-five-forecast", () =>
-    getCallFiveDaysForecast(lat, lon)
+    getForecast(lat, lon)
   )
-  const [list, setList] = useState<any>([])
-
   useEffect(() => {
     refetch()
   }, [lat, lon])
 
+  //5-day forecast data
+  const [list, setList] = useState<any>([])
   useEffect(() => {
     if (data) {
       const processedData = processForecastData(data.list)

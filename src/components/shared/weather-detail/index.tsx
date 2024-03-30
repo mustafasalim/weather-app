@@ -9,15 +9,13 @@ import {
 } from "@phosphor-icons/react"
 import { useQuery } from "react-query"
 import { useEffect } from "react"
-import { getCallFiveDaysForecast } from "../../../services/weather-services"
+import { getForecast } from "../../../services/weather-services"
 
 const WeatherDetail = () => {
   const [searchParams] = useSearchParams()
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
-  const { data, refetch } = useQuery("one-call", () =>
-    getCallFiveDaysForecast(lat, lon)
-  )
+  const { data, refetch } = useQuery("one-call", () => getForecast(lat, lon))
 
   const list = data && data.list.slice(0, 1).map((item: any) => item && item)
 

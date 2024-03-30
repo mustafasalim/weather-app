@@ -19,7 +19,6 @@ export const processForecastData = (
 ): ProcessedForecast[] => {
   const dailyForecasts: { [date: string]: WeatherData[] } = {}
 
-  // Veriyi tarih bazında gruplayın ve her gün için ortalama sıcaklığı alın
   data.forEach((forecast) => {
     const date = new Date(forecast.dt * 1000).toISOString().split("T")[0]
     if (!dailyForecasts[date]) {
@@ -28,7 +27,6 @@ export const processForecastData = (
     dailyForecasts[date].push(forecast)
   })
 
-  // Ortalama sıcaklıkları hesaplayın ve 5 günlük tahminlere dönüştürün
   const processedData: ProcessedForecast[] = Object.keys(dailyForecasts).map(
     (date) => {
       const dailyData = dailyForecasts[date]
@@ -38,7 +36,7 @@ export const processForecastData = (
       return {
         date,
         avgTemp,
-        dailyData: dailyData.slice(0, 8), // İlk 8 tahmini alarak 5 günlük tahminler oluşturun
+        dailyData: dailyData.slice(0, 8),
       }
     }
   )

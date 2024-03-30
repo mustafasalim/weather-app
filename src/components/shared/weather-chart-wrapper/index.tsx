@@ -3,7 +3,7 @@ import WeatherChart from "./weather-chart"
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { getCallFiveDaysForecast } from "../../../services/weather-services"
+import { getForecast } from "../../../services/weather-services"
 
 const WeatherChartWrapper = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -13,7 +13,7 @@ const WeatherChartWrapper = () => {
   const lon = searchParams.get("lon")
 
   const { data, refetch } = useQuery("call-forecast", () =>
-    getCallFiveDaysForecast(lat, lon)
+    getForecast(lat, lon)
   )
 
   const temperature =
@@ -38,20 +38,23 @@ const WeatherChartWrapper = () => {
 
   const handleSelect = (index: number) => {
     setSelectedIndex(index)
+    console.log("clikc")
   }
 
   return (
     <div>
       <Tabs
-        defaultFocus={true}
-        disableUpDownKeys
         selectedIndex={selectedIndex}
-        scrolling="enabled"
         onSelect={handleSelect}
-        className="w-full h-full p-2 bg-base-gray-800 rounded-lg overflow-hidden"
+        className="w-full min-h-[300px] p-2 bg-base-gray-800 rounded-lg overflow-hidden"
       >
         <TabList className="flex gap-x-2 border-base-gray-600 lg:text-heading-sm text-heading-xs text-base-gray-200 cursor-pointer">
-          <Tab className={tabClass(0)}>
+          <Tab
+            className={tabClass(0)}
+            onClick={(e) => {
+              e.preventDefault()
+            }}
+          >
             <span>Thermal sensation</span>
           </Tab>
           <Tab className={tabClass(1)}>

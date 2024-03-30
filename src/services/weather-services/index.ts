@@ -15,7 +15,7 @@ export const getCurrentWeather = async (lat: any, lon: any) => {
 }
 
 //5-day and 5-hour api
-export const getCallFiveDaysForecast = async (lat: any, lon: any) => {
+export const getForecast = async (lat: any, lon: any) => {
   const response = await api({
     method: "get",
     url: "data/2.5/forecast",
