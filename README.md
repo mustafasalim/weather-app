@@ -1,32 +1,131 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### In this project, it shows current and forecast weather information of cities using weather api. It has a user friendly interface. Users can easily query the cities they want and view weather information.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://weather-app-react-project-ecru.vercel.app/
 
-## Expanding the ESLint configuration
+## API
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Bu API, Axios ve React Query kütüphanelerini kullanarak geliştirilmiş bir hava durumu bilgisi sağlayıcı sistemdir. Axios, HTTP istekleri yapmak ve almak için kullanılırken, React Query, bu istekleri yönetmek ve önbelleğe almak için kullanılır. API, kullanıcıların istedikleri şehirlerin hava durumu bilgilerini almak için bir arayüz sunar. Kullanıcılar, API'ye istek yaparak belirledikleri şehrin hava durumuyla ilgili güncel verilere erişebilirler. API, istekleri işleyerek hava durumu verilerini kaynaklardan alır, işler ve kullanıcıya JSON formatında yanıt verir. Bu API, modern web uygulamaları için hava durumu verilerine erişim sağlamak amacıyla tasarlanmıştır.
 
-- Configure the top-level `parserOptions` property like this:
+```bash
+import axios from "axios"
+import toast from "react-hot-toast"
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
+//BASE_URL AND API_KEY
+const BASE_URL = "https://api.openweathermap.org"
+const API_KEY = "da043207154dbe698034acd833f5c026"
+
+//create base url with axios create
+const baseUrl = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
   },
+  params: {
+    appid: API_KEY,
+  },
+})
+
+// Add a response interceptor
+baseUrl.interceptors.response.use(
+  function (response) {
+    return response
+  },
+  function (error) {
+    if (error) {
+      setTimeout(() => {
+        window.location.href = "/"
+      }, 1500)
+
+      toast.error(
+        "No region with coordinates found. You have been redirected to the main page"
+      )[error]
+    }
+    return Promise.reject(error)
+  }
+)
+
+//apiOptions interface
+interface apiOptions {
+  method: string
+  url: string
+  params?: any
+  data?: any
 }
+
+//general api
+export const api = async (param: apiOptions) => {
+  const { method, url, params, data } = param
+
+  try {
+    const response = await baseUrl({
+      method,
+      url,
+      params,
+      data,
+    })
+
+    return response
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Packages and Technologies
 
-# weather-app
+- phosphor-icons/react
+- apexcharts
+- axios
+- classnames
+- framer-motion
+- react
+- react-apexcharts
+- react-dom
+- react-hot-toast
+- react-query
+- react-router-dom
+- react-tabs
+- react-use
+- zustand-
+
+## Deployment
+
+Run this project for deployment
+
+```bash
+ pnpm install
+ pnpm dev
+```
+
+## Features
+
+- [@octokatherine](https://www.github.com/octokatherine) tasarım ve geliştirme için.
+
+## Ekler
+
+Herhangi bir ek bilgi buraya gelir
+
+## Rozetler
+
+[shields.io](https://shields.io/) Gibi bir yerden rozetler ekleyin.
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+## Katkı
+
+Katkılara her zaman açığız!
+
+Başlamak `Contributor.md'ye bakın.
+
+Lütfen bu projenin `davranış kurallarına` uyun.
+
+## Ekran Görüntüleri
+
+![Uygulama Ekran Görüntüsü](/public/images/bg-images/rain-day.png)

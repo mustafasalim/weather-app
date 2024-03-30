@@ -9,8 +9,11 @@ const NotFound = () => {
         alt=""
       />
       <div className="flex flex-col items-center justify-center">
-        <div className=" lg:text-heading-xl text-heading-lg text-gray-100">
+        <div className="lg:text-heading-xl text-heading-lg text-gray-100">
           404
+        </div>
+        <div className=" lg:text-heading-xl text-heading-lg text-gray-100">
+          (sorry, no such page found 😔)
         </div>
         <Link
           className=" underline text-heading-sm lg:text-heading-md text-product-blue-light"

@@ -2,6 +2,7 @@ import GeoLocation from "../../components/shared/geo-location"
 import SuggestionAutocomplete from "../../components/shared/suggestion-autocomplete"
 import Logo from "../../components/ui/logo"
 import { motion } from "framer-motion"
+import ErrorBoundary from "../../error-boundry"
 
 const Home = () => {
   return (
@@ -28,9 +29,13 @@ const Home = () => {
               Choose a location to see the weather forecast
             </h2>
           </div>
-          <GeoLocation />
+          <ErrorBoundary>
+            <GeoLocation />
+          </ErrorBoundary>
           <div className=" w-full flex items-center justify-center">
-            <SuggestionAutocomplete size="large" />
+            <ErrorBoundary>
+              <SuggestionAutocomplete size="large" />
+            </ErrorBoundary>
           </div>
         </div>
       </div>

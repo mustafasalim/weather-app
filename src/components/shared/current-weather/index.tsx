@@ -23,6 +23,8 @@ const CurrentWeather = () => {
 
   console.log(data)
 
+  throw new Error()
+
   return (
     <section className="w-full p-3 h-full bg-base-gray-800 rounded-xl">
       {data.weather && data.weather.length > 0 && (
@@ -36,10 +38,10 @@ const CurrentWeather = () => {
         >
           {data && (
             <div className="w-full flex flex-col p-6">
-              <div className="lg:text-heading-xl text-heading-sm text-base-gray-100">
+              <div className="lg:text-heading-xl md:text-heading-lg text-heading-sm text-base-gray-100">
                 {data?.name}, {data?.sys?.country}
               </div>
-              <div className="lg:text-lg text-xs text-base-gray-100">
+              <div className="lg:text-lg md:text-md text-xs text-base-gray-100">
                 {date}
               </div>
             </div>

@@ -1,5 +1,6 @@
 import SuggestionAutocomplete from "../../../components/shared/suggestion-autocomplete"
 import Logo from "../../../components/ui/logo"
+import ErrorBoundary from "../../../error-boundry"
 
 const Header = () => {
   return (
@@ -8,7 +9,9 @@ const Header = () => {
         <Logo />
       </div>
       <div className="w-[20rem]">
-        <SuggestionAutocomplete />
+        <ErrorBoundary>
+          <SuggestionAutocomplete />
+        </ErrorBoundary>
       </div>
     </header>
   )

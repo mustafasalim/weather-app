@@ -14,7 +14,6 @@
     "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
-    "dotenv": "^16.4.5",
     "framer-motion": "^11.0.23",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
@@ -22,10 +21,8 @@
     "react-hot-toast": "^2.4.1",
     "react-query": "^3.39.3",
     "react-router-dom": "6",
-    "react-scroll": "^1.9.0",
     "react-tabs": "^6.0.2",
     "react-use": "^17.5.0",
-    "weather-app": "link:",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
