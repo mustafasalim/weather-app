@@ -1,6 +1,6 @@
 # Weather App
 
-##### Bu proje, kullanıcıların hava durumu bilgilerini anlık olarak görüntülemelerini sağlayan bir web uygulamasıdır. Geliştirme aşamasında React kütüphanesi kullanılmıştır ve kullanıcılara hava durumu verilerine erişim sağlamak için çeşitli hava durumu API'larıyla entegre edilmiştir. Uygulama, kullanıcıların dünya genelinde herhangi bir konumun hava durumu bilgisine kolayca erişmelerini sağlar, böylece günlük yaşamlarında seyahat planlarını yaparken veya dışarıda zaman geçirirken hava koşullarını takip etmelerine yardımcı olur.
+Bu proje, kullanıcıların hava durumu bilgilerini anlık olarak görüntülemelerini sağlayan bir web uygulamasıdır. Geliştirme aşamasında React kütüphanesi kullanılmıştır ve kullanıcılara hava durumu verilerine erişim sağlamak için çeşitli hava durumu API'larıyla entegre edilmiştir. Uygulama, kullanıcıların dünya genelinde herhangi bir konumun hava durumu bilgisine kolayca erişmelerini sağlar, böylece günlük yaşamlarında seyahat planlarını yaparken veya dışarıda zaman geçirirken hava koşullarını takip etmelerine yardımcı olur.
 
 ## Uygulama Linki
 
@@ -23,6 +23,7 @@ Tarayıcınızda http://localhost:3000 adresine giderek uygulamayı görüntüle
 ### Responsive Tasarım
 
 Bu hava durumu uygulaması, kullanıcıların farklı cihazlarda ve ekran boyutlarında rahatlıkla kullanabilmesini sağlamak için responsive bir tasarıma sahiptir. Responsive tasarım, uygulamanın masaüstü bilgisayarlar, dizüstü bilgisayarlar, tabletler ve akıllı telefonlar gibi farklı cihazlarda tutarlı bir şekilde görüntülenmesini sağlar.
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/responsive.png)
 
 ### Grafik
 
