@@ -1,6 +1,6 @@
 # Weather App
 
-Bu projede, openweather api kullanılarak hava durumu uygulaması geliştirdim.Bu uygulamayı yaparken önceliğim responsive ve kullanıcı dostu bi uygulama yapmaktı.Uygulama içersinde aynı zamanda güncel hava durumu bilgilerine göre kullanıcıya bilgilendirme mesajları,eger kullanıcı konumu açıksa mevcut konuma göre güncel hava durumu bilgileri,kullanıcının girdigi kelimelere göre şehirlerin listelenmesi,Sıcaklık,nem ve rüzgar hızının kullanıcıya grafikler aracılıyla gösterilmesi gibi pek çok özellik bulunmaktadır.
+##### Bu proje, kullanıcıların hava durumu bilgilerini anlık olarak görüntülemelerini sağlayan bir web uygulamasıdır. Geliştirme aşamasında React kütüphanesi kullanılmıştır ve kullanıcılara hava durumu verilerine erişim sağlamak için çeşitli hava durumu API'larıyla entegre edilmiştir. Uygulama, kullanıcıların dünya genelinde herhangi bir konumun hava durumu bilgisine kolayca erişmelerini sağlar, böylece günlük yaşamlarında seyahat planlarını yaparken veya dışarıda zaman geçirirken hava koşullarını takip etmelerine yardımcı olur.
 
 ## Uygulama Linki
 
@@ -8,25 +8,27 @@ https://weather-app-react-project-ecru.vercel.app/
 
 ## Başlatma
 
-Projeyi başlatmak için
+Projeyi klonlayın veya ZIP dosyası olarak indirin.
+Terminalde proje klasörüne gidin.
 
 ```bash
- pnpm install
- pnpm dev
+ pnpm install       //komutunu kullanarak gerekli bağımlılıkları yükleyin.
+ pnpm dev           //komutunu kullanarak uygulamayı başlatın
 ```
+
+Tarayıcınızda http://localhost:3000 adresine giderek uygulamayı görüntüleyin.
 
 ## Özellikler
 
-### Duyarlı Tasarım
+### Responsive Tasarım
 
-Projeyi yaparken öncellik olarak her ekrana duyarlı bi tasarımı olmasıydı.Proje tasarımını yaparken tailwindcss kullandım.Aynı zamanda duyarlı tasarım yaparken tailwindcss kısmındada kendimi geliştirdim.
-![Uygulama Ekran Görüntüsü](/public/images/readme-images/responsive.png)
+Bu hava durumu uygulaması, kullanıcıların farklı cihazlarda ve ekran boyutlarında rahatlıkla kullanabilmesini sağlamak için responsive bir tasarıma sahiptir. Responsive tasarım, uygulamanın masaüstü bilgisayarlar, dizüstü bilgisayarlar, tabletler ve akıllı telefonlar gibi farklı cihazlarda tutarlı bir şekilde görüntülenmesini sağlar.
 
 ### Grafik
 
-Bu grafigi yapmamın amacı sıcaklık,nem,rüzgar hızı gibi günlük hayatta ihtiyacımız oldugu bilgileri kullanıcıya daha basit ve okunulabilir olarak göstermekdi. Aynı zamanda projenin daha zengin ve şık gözükmesiydi.
+Bu hava durumu uygulaması, kullanıcıların günlük yaşamlarında ihtiyaç duydukları sıcaklık, nem ve rüzgar hızı gibi önemli bilgileri daha basit ve okunabilir bir şekilde sunmak için çeşitli grafikler kullanır. Bu grafikler, kullanıcıların hava durumu verilerini daha anlaşılır bir şekilde görselleştirmelerine ve hızlıca bilgi alabilmelerine olanak tanır. Ayrıca, grafiklerin estetik tasarımı, projenin daha zengin ve şık görünmesini sağlar.
 
-Grafik özelikleri
+#### Grafik özelikleri
 
 - Sıcaklık grafiği: Belirli bir zamanda sıcaklıktaki değişimi gösterir.
 - Nem grafiği: Belirli bir zamandaki nem değişimini gösterir.
@@ -36,13 +38,29 @@ Grafik özelikleri
 
 ### Auto-complete
 
-Auto-complete bileşenini yaparken debounce teknigini kullandım.Bu teknigi kullanmamın sebebi belirli bi saniye içersinde kullanıcın yazmış oldugu girdiyi alıp openweather da şehirlerin oldugu api ya istege çıkmaktı. Api dan dönen sonuçları bileşen içersinde listeledim.Kullanıcı güncel hava durumunu görmek istedigi şehir seçtiginde ise o şehrin güncel hava durumu bilgilerini gösterir.
+Auto-complete bileşenini oluştururken debounce tekniğini tercih ettim. Bu teknik, kullanıcının yazdığı girdiyi belirli bir saniye içinde alıp OpenWeather API'si üzerinden şehir aramak için isteği göndermemin nedeniydi. API'dan dönen sonuçları, bileşen içinde listelemekteyim. Kullanıcı istediği şehri seçtiğinde, o şehrin güncel hava durumu bilgilerini görüntülemektedir.
+
+Bu yöntemi kullanma amacım, kullanıcının arama sürecini daha akıcı ve kesintisiz hale getirmekti. Debounce tekniği sayesinde, kullanıcı hızla yazarken arka planda gereksiz isteklerin gönderilmesini engelleyerek, performansı artırmayı hedefledim. Böylelikle, kullanıcılar arama yaparken daha sorunsuz bir deneyim yaşayabilir ve istedikleri şehrin hava durumu bilgilerine hızlıca erişebilirler.
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/search.png)
 
-### Coğrafi Konum
+### Konum
 
-Cografi konumdaki amacım kullanıcın bulundugu bölgedeki güncel hava durumu bilgisinin kolay bi şekilde gösterilmesiydi.Eğer kullanıcı konumu açık ise auto-complete ki current locationa veya anasayfadaki current locationa tıkladıgında bulundugu konumun güncel hava durumunu gösterir.Eger kullanıcı konumu açık degil ise kullanıcıdan konum açmasını ister.Kullanıcı konum bilgisini reddetiyse ve daha sonrasında current locationa tıkladıgında kullanıcıya konumunu açmasını gerektigini gösteren mesajlar gösterilir
+Tabii, işte daha açıklayıcı bir şekilde yazılmış hali:
+
+Projedeki amaçlardan biri, kullanıcının bulunduğu coğrafi konumun güncel hava durumu bilgisinin kolayca görüntülenmesini sağlamaktı. Bu amaç doğrultusunda, iki farklı senaryo öngördüm:
+
+#### Konumun Otomatik Olarak Alınması:
+
+Kullanıcının konum bilgisini otomatik olarak alarak, bulunduğu bölgedeki güncel hava durumu bilgisini göstermek.
+Eğer kullanıcı konum izni vermişse, "auto-complete" bileşeni içinde veya anasayfadaki "current location" butonuna tıkladığında, kullanıcının bulunduğu konumun hava durumu bilgisini anında görüntülemek.
+
+#### Konum İzin İsteği:
+
+Kullanıcının konum izni vermemesi durumunda, kullanıcıya konum izni isteğinde bulunulur.
+Eğer kullanıcı konum iznini reddederse ve daha sonra "current location" butonuna tıklarsa, kullanıcıya konum izninin açılması gerektiğini bildiren mesajlar gösterilir.
+
+Bu yaklaşım, kullanıcı deneyimini artırmak ve kullanıcının hava durumu bilgilerine hızlı ve kolay bir şekilde erişmesini sağlamak için tasarlandı. Kullanıcıya hem otomatik hem de manuel olarak konum izni alma seçeneği sunularak, kullanıcının tercihine göre hareket etmesi sağlanmış oldu. Bu sayede, kullanıcının güncel hava durumu bilgisine ulaşması için mümkün olan en kolay ve sorunsuz yöntemler sunulmuş oldu.
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/search.png)
 
@@ -50,20 +68,32 @@ Cografi konumdaki amacım kullanıcın bulundugu bölgedeki güncel hava durumu 
 
 ### Hava Durumu Simgeleri ve Arka Plan Görselleri
 
-Burda apidan gelen bilgilere göre hava durumu iconları ve arka plan resimleri gelir.
-iconlar ve arkaplan resimleri ikiye ayrılır.Gündüz oldugunda gündüz iconları ve arkaplan resimleri ,Gece oldugunda gece iconları ve arkaplan resimleri olarak gösterilir.Bunlar apidan dönen icon bilgilerine ve gün batımı ve gün dogumu bilgilerine göre gösterilir.
+#### Gündüz Görselleri:
+
+Gündüz vaktinde, güneş ışığına uygun olarak gündüz ikonları ve arka plan resimleri kullanılır.
+API'den gelen verilerde güneşin doğuş ve batış saatleri bilgisi bulunur. Bu bilgilere göre, gün batımı ve gün doğumu saatleri belirlenir.
+Güneş doğuşundan batışına kadar geçen zaman diliminde gündüz ikonları ve arka plan resimleri gösterilir.
+Gündüz ikonları genellikle güneşi, açık gökyüzünü veya bulutlu manzaraları temsil eder. Arka plan resimleri de benzer şekilde gündüz manzaralarını yansıtır.
+
+#### Gece Görselleri:
+
+Gece vaktinde, karanlık ortama uygun olarak gece ikonları ve arka plan resimleri kullanılır.
+Güneş batışından doğuşuna kadar geçen zaman diliminde gece ikonları ve arka plan resimleri gösterilir.
+Gece ikonları genellikle ayı, yıldızları veya bulutlu/gece manzaralarını temsil eder. Arka plan resimleri de karanlık atmosferi yansıtır.
+
+Bu yaklaşım, kullanıcıya daha gerçekçi ve sezgisel bir hava durumu deneyimi sunar. Zamanın gündüz veya gece olmasına bağlı olarak, görsellerin dinamik olarak değiştirilmesi, kullanıcının hava durumunu daha iyi anlamasına ve görsel olarak daha zengin bir deneyim yaşamasına yardımcı olur. Bu sayede, kullanıcı uygulamayı kullanırken güncel hava durumunu daha kolay algılar ve hava durumu bilgilerini daha çekici bir şekilde görüntüler.
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/current.png)
 
 ### Hava Durumu Bilgilerndirme Mesajları
 
-Güncel hava durumu bilgilerine göre kullanıcıya kısa bilgilendirme mesajları gösterir.Bu mesajlar güncel hava durumuna ve saat dilimine karşı degişkenlik gösterir
+Proje, güncel hava durumu bilgilerine göre kullanıcıya kısa bilgilendirme mesajları sunar. Bu mesajlar, kullanıcının hava durumu hakkında hızlı ve öz bilgi almasını sağlar ve hava durumunu daha iyi anlamasına yardımcı olur.
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/message.png)
 
 ### Hata Durumları
 
-Uygulama içersinde olası bi hata durumunda kullanıcıya hata mesajları gösterilir.Bu mesajlar kullanıcının rahat anlıyabilecegi şekilde gösterilir.
+Hata mesajları, kullanıcıların karşılaştığı sorunları net bir şekilde anlamalarını ve gerektiğinde doğru adımları atmalarını sağlar. Basit ve açık bir dil kullanılarak yazılmış olan bu mesajlar, kullanıcıların sorunları hızlıca çözmelerine yardımcı olur.
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/error.png)
 

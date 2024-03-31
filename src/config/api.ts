@@ -1,10 +1,10 @@
 import axios from "axios"
-import { log } from "console"
+
 import toast from "react-hot-toast"
 
 //BASE_URL AND API_KEY
-const BASE_URL = "https://api.openweathermap.org"
-const API_KEY = "da043207154dbe698034acd833f5c026"
+const BASE_URL = import.meta.env.VITE_WEATHER_BASE_URL
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
 
 //create base url with axios create
 const baseUrl = axios.create({
