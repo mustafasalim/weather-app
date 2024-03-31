@@ -75,16 +75,16 @@ Gündüz vaktinde, güneş ışığına uygun olarak gündüz ikonları ve arka 
 API'den gelen verilerde güneşin doğuş ve batış saatleri bilgisi bulunur. Bu bilgilere göre, gün batımı ve gün doğumu saatleri belirlenir.
 Güneş doğuşundan batışına kadar geçen zaman diliminde gündüz ikonları ve arka plan resimleri gösterilir.
 Gündüz ikonları genellikle güneşi, açık gökyüzünü veya bulutlu manzaraları temsil eder. Arka plan resimleri de benzer şekilde gündüz manzaralarını yansıtır.
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/current-clear.png)
 
 #### Gece Görselleri:
 
 Gece vaktinde, karanlık ortama uygun olarak gece ikonları ve arka plan resimleri kullanılır.
 Güneş batışından doğuşuna kadar geçen zaman diliminde gece ikonları ve arka plan resimleri gösterilir.
 Gece ikonları genellikle ayı, yıldızları veya bulutlu/gece manzaralarını temsil eder. Arka plan resimleri de karanlık atmosferi yansıtır.
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/current.png)
 
 Bu yaklaşım, kullanıcıya daha gerçekçi ve sezgisel bir hava durumu deneyimi sunar. Zamanın gündüz veya gece olmasına bağlı olarak, görsellerin dinamik olarak değiştirilmesi, kullanıcının hava durumunu daha iyi anlamasına ve görsel olarak daha zengin bir deneyim yaşamasına yardımcı olur. Bu sayede, kullanıcı uygulamayı kullanırken güncel hava durumunu daha kolay algılar ve hava durumu bilgilerini daha çekici bir şekilde görüntüler.
-
-![Uygulama Ekran Görüntüsü](/public/images/readme-images/current.png)
 
 ### Hava Durumu Bilgilerndirme Mesajları
 
