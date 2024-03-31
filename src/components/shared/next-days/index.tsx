@@ -11,8 +11,9 @@ const NextDays = () => {
   const [searchParams] = useSearchParams()
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
-  const { data, refetch } = useQuery("call-five-forecast", () =>
-    getForecast(lat, lon)
+  const { data, refetch } = useQuery(
+    "call-five-forecast",
+    async () => await getForecast(lat, lon)
   )
   useEffect(() => {
     refetch()
@@ -31,7 +32,7 @@ const NextDays = () => {
     <section className="w-full lg:h-52 h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
       <div className="lg:w-full lg:h-full flex items-center  overflow-x-auto">
         {data &&
-          list.map((item: any, idx: any) => (
+          list.slice(1.6).map((item: any, idx: any) => (
             <Day
               key={idx}
               day={getDaysOfWeek()[idx]}

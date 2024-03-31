@@ -15,7 +15,7 @@ const SuggestionAutocomplete = (props: SuggestionAutocompleteProps) => {
   const [searchValue, setSearchValue] = useState<string>("")
   const { data: geoData, refetch: geoRefetch } = useQuery(
     "direct-geocoding",
-    () => getGeo(searchValue),
+    async () => await getGeo(searchValue),
     {
       enabled: false,
       refetchOnWindowFocus: false,

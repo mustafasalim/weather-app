@@ -21,8 +21,9 @@ const Weather = () => {
   const lon = searchParams.get("lon")
 
   //brings up to date weather data
-  const { data, refetch } = useQuery("current-weather", () =>
-    getCurrentWeather(lat, lon)
+  const { data, refetch } = useQuery(
+    "current-weather",
+    async () => await getCurrentWeather(lat, lon)
   )
 
   //If you have data, it sends it to the CurrentWeather stat and if the data is not available, certain values are sent to the auto alert function

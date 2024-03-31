@@ -12,8 +12,9 @@ const WeatherChartWrapper = () => {
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
 
-  const { data, refetch } = useQuery("call-forecast", () =>
-    getForecast(lat, lon)
+  const { data, refetch } = useQuery(
+    "call-forecast",
+    async () => await getForecast(lat, lon)
   )
 
   const temperature =
