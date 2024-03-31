@@ -20,7 +20,7 @@ Projeyi başlatmak için
 ### Duyarlı Tasarım
 
 Projeyi yaparken öncellik olarak her ekrana duyarlı bi tasarımı olmasıydı.Proje tasarımını yaparken tailwindcss kullandım.Aynı zamanda duyarlı tasarım yaparken tailwindcss kısmındada kendimi geliştirdim.
-![Uygulama Ekran Görüntüsü](/public/images/readme-images/desktop.png) ![Uygulama Ekran Görüntüsü](/public/images/readme-images/tablet.png) ![Uygulama Ekran Görüntüsü](/public/images/readme-images/mobile.png)
+![Uygulama Ekran Görüntüsü](/public/images/readme-images/responsive.png)
 
 ### Grafik
 
