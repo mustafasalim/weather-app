@@ -56,7 +56,7 @@ iconlar ve arkaplan resimleri ikiye ayrılır.Gündüz oldugunda gündüz iconla
 
 ### Hava Durumu Bilgilerndirme Mesajları
 
-Güncel hava durumu bilgilerine göre kullanıcıya kısa bilgilendirme mesajları gösterir.
+Güncel hava durumu bilgilerine göre kullanıcıya kısa bilgilendirme mesajları gösterir.Bu mesajlar güncel hava durumuna ve saat dilimine karşı degişkenlik gösterir
 
 ![Uygulama Ekran Görüntüsü](/public/images/readme-images/message.png)
 
