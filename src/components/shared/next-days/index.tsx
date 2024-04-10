@@ -4,6 +4,7 @@ import AutoIcon from "../../../utils/auto-weather-icons"
 import { useEffect, useState } from "react"
 import { processForecastData } from "../../../utils/process-forecast-data"
 import { useForecastStore } from "../../../store/forecast-store"
+import { log } from "console"
 
 const NextDays = () => {
   const forecast = useForecastStore((state: any) => state.forecast)
@@ -17,11 +18,13 @@ const NextDays = () => {
     }
   }, [forecast])
 
+  console.log("list", list)
+
   return (
     <section className="w-full lg:h-52 h-[11rem] bg-base-gray-800 rounded-xl flex items-center justify-center">
       <div className="lg:w-full lg:h-full flex items-center  overflow-x-auto">
         {list &&
-          list?.slice(0.6).map((item: any, idx: any) => (
+          list?.slice(1.6).map((item: any, idx: any) => (
             <Day
               key={idx}
               day={getDaysOfWeek()[idx]}

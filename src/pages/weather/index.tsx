@@ -13,6 +13,7 @@ import WeatherDetail from "../../components/shared/weather-detail"
 import { motion } from "framer-motion"
 import { useForecastStore } from "../../store/forecast-store"
 import Loading from "../../components/ui/loading"
+import Compass from "../../components/ui/compass"
 const Weather = () => {
   const [searchParams] = useSearchParams()
   const { setCurrentWeather } = useWeatherStore()
@@ -33,6 +34,11 @@ const Weather = () => {
   useEffect(() => {
     if (currentWeatherData) {
       setCurrentWeather(currentWeatherData)
+      autoAlertMessage({
+        path: currentWeatherData?.weather[0]?.main,
+        sunrise: currentWeatherData?.sys?.sunrise,
+        sunset: currentWeatherData?.sys?.sunset,
+      })
     }
   }, [currentWeatherData])
 
@@ -46,11 +52,6 @@ const Weather = () => {
     if (lat && lon) {
       currentWeatherRefetch()
       forecastRefetch()
-      autoAlertMessage({
-        path: currentWeatherData?.weather[0]?.main,
-        sunrise: currentWeatherData?.sys?.sunrise,
-        sunset: currentWeatherData?.sys?.sunset,
-      })
     }
   }, [lat, lon])
 
@@ -63,7 +64,6 @@ const Weather = () => {
       <motion.div>
         <section className="w-full h-screen overflow-auto bg-base-gray-900 p-2 flex flex-col gap-y-2">
           <Header />
-
           <div className="grid  grid-cols-12 gap-2">
             <div className="col-span-12 sm:col-span-8">
               <ErrorBoundary>
@@ -86,10 +86,18 @@ const Weather = () => {
             </div>
           </div>
 
-          <div className="sm:col-span-6 col-span-12 ">
-            <ErrorBoundary>
-              <WeatherChartWrapper />
-            </ErrorBoundary>
+          <div className="grid grid-cols-12 gap-2">
+            <div className="sm:col-span-10 col-span-12 ">
+              <ErrorBoundary>
+                <WeatherChartWrapper />
+              </ErrorBoundary>
+            </div>
+            <div className="sm:col-span-2 col-span-12">
+              <Compass
+                compassSize={110}
+                arrowSize={11}
+              />
+            </div>
           </div>
         </section>
       </motion.div>

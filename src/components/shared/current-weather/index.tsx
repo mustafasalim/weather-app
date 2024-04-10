@@ -4,6 +4,7 @@ import { useWeatherStore } from "../../../store/current-weather-store"
 import { formatDate } from "../../../utils/format-date"
 import { getBackgroundImageUrl } from "../../../utils/auto-bg-images"
 import { motion } from "framer-motion"
+import Compass from "../../ui/compass"
 
 const CurrentWeather = () => {
   const [backgroundUrl, setBackgroundUrl] = useState<any>("")
@@ -26,27 +27,29 @@ const CurrentWeather = () => {
 
   return (
     <motion.div
-      className="w-full p-3 h-full bg-base-gray-800 rounded-xl"
+      className="w-full p-3 h-full bg-base-gray-800 rounded-xl "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       {data.weather && data.weather.length > 0 && (
         <div
-          className="w-full h-full lg:bg-center flex flex-col items-center justify-between rounded-xl"
+          className="w-full h-full lg:bg-center flex flex-col items-center justify-between rounded-xl "
           style={{
-            backgroundImage: `url('${backgroundUrl}')`,
+            backgroundImage: `url('${backgroundUrl}') `,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
           {data && (
-            <div className="w-full flex flex-col p-6">
-              <div className="lg:text-heading-xl md:text-heading-lg text-heading-sm text-base-gray-100">
-                {data?.name}, {data?.sys?.country}
-              </div>
-              <div className="lg:text-lg md:text-md text-xs text-base-gray-100">
-                {date}
+            <div className="w-full flex items-center justify-between">
+              <div className="w-full flex flex-col p-6">
+                <div className="lg:text-heading-xl md:text-heading-lg text-heading-sm text-base-gray-100">
+                  {data?.name}, {data?.sys?.country}
+                </div>
+                <div className="lg:text-lg md:text-md text-xs text-base-gray-100">
+                  {date}
+                </div>
               </div>
             </div>
           )}
