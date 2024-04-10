@@ -4,7 +4,6 @@ import AutoIcon from "../../../utils/auto-weather-icons"
 import { useEffect, useState } from "react"
 import { processForecastData } from "../../../utils/process-forecast-data"
 import { useForecastStore } from "../../../store/forecast-store"
-import { log } from "console"
 
 const NextDays = () => {
   const forecast = useForecastStore((state: any) => state.forecast)

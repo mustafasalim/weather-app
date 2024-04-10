@@ -1,7 +1,13 @@
 import { Wind } from "@phosphor-icons/react"
 import { useWeatherStore } from "../../../store/current-weather-store"
 
-const Compass = () => {
+interface CompassProps {
+  compassSize: any
+  arrowSize: any
+}
+
+const Compass = (props: CompassProps) => {
+  const { compassSize, arrowSize } = props
   const data = useWeatherStore((state: any) => state.currentWeather)
   const windSpeed = data?.wind?.speed
   const windDeg = data?.wind?.deg
@@ -23,8 +29,8 @@ const Compass = () => {
           <div className="image relative">
             <img
               src="./images/compass/compass_body.svg"
-              width={110}
-              height={110}
+              width={compassSize}
+              height={compassSize}
             />
             <img
               src="./images/compass/compass_arrow.svg"
@@ -33,8 +39,8 @@ const Compass = () => {
                 transform: `rotate(${windDeg}deg) translateX(-50%)`,
                 height: "100%",
               }}
-              width={11}
-              height={11}
+              width={arrowSize}
+              height={arrowSize}
             />
           </div>
           <p

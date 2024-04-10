@@ -4,7 +4,6 @@ import { useWeatherStore } from "../../../store/current-weather-store"
 import { formatDate } from "../../../utils/format-date"
 import { getBackgroundImageUrl } from "../../../utils/auto-bg-images"
 import { motion } from "framer-motion"
-import Compass from "../../ui/compass"
 
 const CurrentWeather = () => {
   const [backgroundUrl, setBackgroundUrl] = useState<any>("")
