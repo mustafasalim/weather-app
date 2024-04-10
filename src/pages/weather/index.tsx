@@ -2,7 +2,7 @@ import { useQuery } from "react-query"
 import CurrentWeather from "../../components/shared/current-weather"
 import NextDays from "../../components/shared/next-days"
 import Header from "./header"
-import { getCurrentWeather } from "../../services/weather-services"
+import { getCurrentWeather, getForecast } from "../../services/weather-services"
 import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useWeatherStore } from "../../store/current-weather-store"
@@ -11,43 +11,56 @@ import ErrorBoundary from "../../error-boundry"
 import { autoAlertMessage } from "../../utils/auto-alert-message"
 import WeatherDetail from "../../components/shared/weather-detail"
 import { motion } from "framer-motion"
-
+import { useForecastStore } from "../../store/forecast-store"
+import Loading from "../../components/ui/loading"
 const Weather = () => {
   const [searchParams] = useSearchParams()
   const { setCurrentWeather } = useWeatherStore()
-
-  //retrieves lat and lon values
+  const { setForecast } = useForecastStore()
   const lat = searchParams.get("lat")
   const lon = searchParams.get("lon")
+  const {
+    data: currentWeatherData,
+    refetch: currentWeatherRefetch,
+    isLoading: currentWeatherLoading,
+  } = useQuery("current-weather", async () => await getCurrentWeather(lat, lon))
+  const {
+    data: forecastData,
+    refetch: forecastRefetch,
+    isLoading: forecastDataLoading,
+  } = useQuery("forecast", async () => await getForecast(lat, lon))
 
-  //brings up to date weather data
-  const { data, refetch } = useQuery(
-    "current-weather",
-    async () => await getCurrentWeather(lat, lon)
-  )
-
-  //If you have data, it sends it to the CurrentWeather stat and if the data is not available, certain values are sent to the auto alert function
   useEffect(() => {
-    if (data) {
-      setCurrentWeather(data)
+    if (currentWeatherData) {
+      setCurrentWeather(currentWeatherData)
+    }
+  }, [currentWeatherData])
+
+  useEffect(() => {
+    if (forecastData) {
+      setForecast(forecastData)
+    }
+  }, [forecastData])
+
+  useEffect(() => {
+    if (lat && lon) {
+      currentWeatherRefetch()
+      forecastRefetch()
       autoAlertMessage({
-        path: data?.weather[0]?.main,
-        sunrise: data?.sys?.sunrise,
-        sunset: data?.sys?.sunset,
+        path: currentWeatherData?.weather[0]?.main,
+        sunrise: currentWeatherData?.sys?.sunrise,
+        sunset: currentWeatherData?.sys?.sunset,
       })
     }
-  }, [data])
-
-  useEffect(() => {
-    refetch()
   }, [lat, lon])
+
+  if (currentWeatherLoading || forecastDataLoading) {
+    return <Loading />
+  }
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
+      <motion.div>
         <section className="w-full h-screen overflow-auto bg-base-gray-900 p-2 flex flex-col gap-y-2">
           <Header />
 

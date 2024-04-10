@@ -9,6 +9,7 @@ const Home = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <div className="relative w-full h-screen overflow-hidden flex flex-col gap-y-32">
         <img

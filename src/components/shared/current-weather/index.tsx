@@ -3,6 +3,7 @@ import AutoIcon from "../../../utils/auto-weather-icons"
 import { useWeatherStore } from "../../../store/current-weather-store"
 import { formatDate } from "../../../utils/format-date"
 import { getBackgroundImageUrl } from "../../../utils/auto-bg-images"
+import { motion } from "framer-motion"
 
 const CurrentWeather = () => {
   const [backgroundUrl, setBackgroundUrl] = useState<any>("")
@@ -21,10 +22,15 @@ const CurrentWeather = () => {
     }
   }, [data])
 
-  console.log(data)
+  console.log("deneme", data.weather)
 
   return (
-    <section className="w-full p-3 h-full bg-base-gray-800 rounded-xl">
+    <motion.div
+      className="w-full p-3 h-full bg-base-gray-800 rounded-xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       {data.weather && data.weather.length > 0 && (
         <div
           className="w-full h-full lg:bg-center flex flex-col items-center justify-between rounded-xl"
@@ -77,7 +83,7 @@ const CurrentWeather = () => {
           )}
         </div>
       )}
-    </section>
+    </motion.div>
   )
 }
 
