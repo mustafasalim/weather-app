@@ -14,6 +14,18 @@ export const getCurrentWeather = async (lat: any, lon: any) => {
   return response.data
 }
 
+export const getGuessingWeather = async (city: any) => {
+  const response = await api({
+    method: "get",
+    url: "/data/2.5/weather",
+    params: {
+      q: city,
+      units: "metric",
+    },
+  })
+  return response.data
+}
+
 //5-day and 5-hour api
 export const getForecast = async (lat: any, lon: any) => {
   const response = await api({

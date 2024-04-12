@@ -1,9 +1,4 @@
-import { Link } from "react-router-dom"
-
-const Logo = () => {
-  return (
-    <Link to="/">
-      <svg
+ <svg
         width="186"
         height="32"
         viewBox="0 0 186 32"
@@ -53,8 +48,3 @@ const Logo = () => {
           />
         </g>
       </svg>
-    </Link>
-  )
-}
-
-export default Logo

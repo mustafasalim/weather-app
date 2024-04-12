@@ -90,9 +90,9 @@ const AutoComplete: React.FC<AutoCompleteOptions> = (props) => {
       </div>
 
       {search.length > 0 && (
-        <ul className="overflow-hidden absolute top-16 transition-all w-full bg-base-gray-500 rounded-lg text-base-gray-100">
+        <ul className="overflow-hidden absolute top-16 transition-all w-full z-10 bg-base-gray-500 rounded-lg text-base-gray-100">
           {options.length === 0 ? (
-            <li className="p-4 border-b border-base-gray-600 opacity-45 cursor-pointer break-words">
+            <li className="p-4 border-b  border-base-gray-600 opacity-45 cursor-pointer break-words">
               "{search}" no results found
             </li>
           ) : (

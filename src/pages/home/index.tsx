@@ -1,8 +1,8 @@
 import GeoLocation from "../../components/shared/geo-location"
 import SuggestionAutocomplete from "../../components/shared/suggestion-autocomplete"
-import Logo from "../../components/ui/logo"
 import { motion } from "framer-motion"
 import ErrorBoundary from "../../error-boundry"
+import { NavLink } from "react-router-dom"
 
 const Home = () => {
   return (
@@ -17,9 +17,15 @@ const Home = () => {
           src="./images/bg-images/home-bg-image.png"
           alt=""
         />
-        <div className="w-full h-40 flex items-center justify-center">
-          <Logo />
-        </div>
+        <NavLink
+          className="w-full h-40 flex items-center justify-center"
+          to="/"
+        >
+          <img
+            src="./images/logo/main-logo.svg"
+            alt=""
+          />
+        </NavLink>
         <div className="w-full h-[140px] flex flex-col items-center justify-between gap-y-4">
           <div className="w-full h-[52px] flex flex-col items-center justify-center gap-y-1">
             <h1 className="lg:text-heading-lg text-heading-md text-base-gray-100">

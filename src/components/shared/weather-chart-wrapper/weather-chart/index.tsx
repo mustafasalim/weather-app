@@ -55,8 +55,10 @@ const WeatherChart = (props: WeatherChartOptions) => {
       },
       xaxis: {
         categories: times,
+
         labels: {
           show: true,
+
           style: {
             colors: "#BFBFD4",
           },
@@ -79,12 +81,6 @@ const WeatherChart = (props: WeatherChartOptions) => {
           shadeIntensity: 0.5,
           gradientToColors: [colors],
         },
-      },
-      markers: {
-        size: 3,
-        colors: ["#ffffff"],
-        strokeColor: "#ffffff",
-        strokeWidth: 3,
       },
     },
     series: [

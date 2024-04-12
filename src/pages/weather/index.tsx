@@ -13,7 +13,7 @@ import WeatherDetail from "../../components/shared/weather-detail"
 import { motion } from "framer-motion"
 import { useForecastStore } from "../../store/forecast-store"
 import Loading from "../../components/ui/loading"
-import Compass from "../../components/ui/compass"
+import Compass from "../../components/shared/compass"
 const Weather = () => {
   const [searchParams] = useSearchParams()
   const { setCurrentWeather } = useWeatherStore()

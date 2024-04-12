@@ -5,10 +5,7 @@ const MainLayout = () => {
   return (
     <section className="font-nunito">
       <Outlet />
-      <Toaster
-        position="top-center"
-        reverseOrder={true}
-      />
+      <Toaster position="top-center" />
     </section>
   )
 }

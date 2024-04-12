@@ -18,6 +18,10 @@ export const routes = createBrowserRouter([
         element: <Weather />,
       },
       {
+        path: "/allergy",
+        element: "allergy",
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
