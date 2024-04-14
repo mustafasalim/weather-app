@@ -56,7 +56,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
             transition={{ duration: 0.2 }}
           >
             <div
-              className=" bg-base-gray-800 w-full h-auto rounded-tl-3xl rounded-tr-3xl "
+              className=" bg-base-gray-800 w-full h-full rounded-tl-3xl rounded-tr-3xl "
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-full flex items-center justify-center  ">
