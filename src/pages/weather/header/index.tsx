@@ -4,13 +4,14 @@ import ErrorBoundary from "../../../error-boundry"
 import { useState } from "react"
 import Modal from "../../../components/ui/modal"
 import { Heartbeat } from "@phosphor-icons/react"
-import Button from "../../../components/ui/button"
 import HealthAndActivitiesModal from "../../../modals/health-and-activities-modal"
+import ButtonGroups from "../../../components/ui/button-groups"
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const openModal = () => setIsOpen(true)
-  const closeModal = () => setIsOpen(false)
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+  const openModal = () => setIsOpenModal(true)
+  const closeModal = () => setIsOpenModal(false)
+
   return (
     <header className="w-full h-14 bg-base-gray-800 rounded-md flex items-center lg:justify-between md:justify-between justify-center py-8">
       <NavLink
@@ -26,20 +27,26 @@ const Header = () => {
       <Modal
         title="Pollen Breakdown"
         onClose={closeModal}
-        isOpen={isOpen}
+        isOpen={isOpenModal}
       >
         <HealthAndActivitiesModal />
       </Modal>
-      <div className="flex items-center justify-center gap-x-4">
-        <Button
-          animation={true}
-          onClick={openModal}
-          variant="primary"
-        >
-          <Heartbeat size={22} />
-        </Button>
 
-        <div className="lg:w-[20rem] w-auto">
+      <div className="flex items-center justify-between lg:gap-x-4 md:gap-x-4">
+        <ButtonGroups
+          button={[
+            {
+              title: "Pollen Breakdown",
+              attiributes: {
+                variant: "primary",
+                icon: <Heartbeat size={22} />,
+                animate: true,
+                onClick: openModal,
+              },
+            },
+          ]}
+        />
+        <div className="lg:w-[20rem] w-full ">
           <ErrorBoundary>
             <SuggestionAutocomplete />
           </ErrorBoundary>
