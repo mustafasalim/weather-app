@@ -24,7 +24,7 @@ const Button = (props: ButtonProps) => {
         {
           "text-base-white bg-product-blue-light text-heading-xs hover:bg-product-blue-light/65":
             variant === "primary",
-          "text-base-white bg-none  text-heading-xs": variant === "default",
+          "text-base-white bg-none text-heading-xs": variant === "default",
         }
       )}
     >

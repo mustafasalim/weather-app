@@ -14,7 +14,7 @@ const Compass = (props: CompassProps) => {
   console.log("compass-forecast", data)
 
   return (
-    <div className="flex flex-col w-full h-full bg-base-gray-800 rounded-xl items-center justify-center gap-4">
+    <div className="flex flex-col w-full h-full bg-base-gray-800 rounded-xl items-center justify-center gap-4 py-6">
       <div>
         <div className="flex gap-x-2 items-center ">
           <Wind

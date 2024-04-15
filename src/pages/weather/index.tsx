@@ -14,6 +14,7 @@ import { motion } from "framer-motion"
 import { useForecastStore } from "../../store/forecast-store"
 import Loading from "../../components/ui/loading"
 import Compass from "../../components/shared/compass"
+import Footer from "./footer"
 const Weather = () => {
   const [searchParams] = useSearchParams()
   const { setCurrentWeather } = useWeatherStore()
@@ -98,6 +99,9 @@ const Weather = () => {
                 arrowSize={11}
               />
             </div>
+          </div>
+          <div className="sm-col-span-12 col-span-12">
+            <Footer />
           </div>
         </section>
       </motion.div>

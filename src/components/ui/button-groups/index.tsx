@@ -25,15 +25,12 @@ const ButtonGroups = (props: ButtonGroupsProps) => {
   if (isMobile) {
     return (
       <>
-        <Button
-          icon={
-            <DotsThreeVertical
-              className="text-base-gray-500"
-              size={32}
-            />
-          }
+        <DotsThreeVertical
           onClick={openDrawer}
-        ></Button>
+          className="text-base-gray-500 text-heading-xs"
+          size={32}
+        />
+
         <Drawer
           title="Menu"
           onClose={closeDrawer}

@@ -21,7 +21,7 @@ const WeatherChart = (props: WeatherChartOptions) => {
         offsetY: -13,
         offsetX: 0,
         style: {
-          fontSize: "12px",
+          fontSize: "11px",
           colors: ["#BFBFD4"],
         },
         background: {
@@ -55,6 +55,12 @@ const WeatherChart = (props: WeatherChartOptions) => {
       },
       xaxis: {
         categories: times,
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
 
         labels: {
           show: true,
@@ -92,12 +98,14 @@ const WeatherChart = (props: WeatherChartOptions) => {
   }
 
   return (
-    <Chart
-      options={weatherData.options}
-      series={weatherData.series}
-      type="area"
-      height="220"
-    />
+    <div className="pt-12">
+      <Chart
+        options={weatherData.options}
+        series={weatherData.series}
+        type="area"
+        height="220"
+      />
+    </div>
   )
 }
 
