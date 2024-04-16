@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -20,4 +20,9 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+::selection {
+  color: #16161f;
+  background-color: aliceblue;
 }

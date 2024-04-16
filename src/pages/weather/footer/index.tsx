@@ -45,7 +45,7 @@ const Footer = () => {
         </span>
       </div>
       <div className="text-heading-xs lg:w-full lg:flex lg:justify-center w-56 hover:text-base-gray-300 transition-colors text-base-gray-400">
-        © IWeather Company, Mustafa Salim 2024
+        © IWeather , Mustafa Salim 2024
       </div>
     </footer>
   )
