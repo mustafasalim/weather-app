@@ -6,6 +6,7 @@ import Modal from "../../../components/ui/modal"
 import { Heartbeat } from "@phosphor-icons/react"
 import HealthAndActivitiesModal from "../../../modals/health-and-activities-modal"
 import ButtonGroups from "../../../components/ui/button-groups"
+import GeoLocation from "../../../components/shared/geo-location"
 
 const Header = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
@@ -13,7 +14,7 @@ const Header = () => {
   const closeModal = () => setIsOpenModal(false)
 
   return (
-    <header className="w-full h-14 bg-base-gray-800 rounded-md flex items-center lg:justify-between md:justify-between justify-center py-8">
+    <header className="w-full h-14 pl-2 pr-2  bg-base-gray-800 rounded-md flex items-center lg:justify-between md:justify-between justify-center py-8">
       <NavLink
         className="hidden lg:block md:block"
         to="/"
@@ -36,6 +37,11 @@ const Header = () => {
         <ButtonGroups
           button={[
             {
+              attiributes: {
+                icon: <GeoLocation />,
+              },
+            },
+            {
               title: "Pollen Breakdown",
               attiributes: {
                 variant: "primary",
@@ -46,6 +52,7 @@ const Header = () => {
             },
           ]}
         />
+
         <div className="lg:w-[20rem] w-full ">
           <ErrorBoundary>
             <SuggestionAutocomplete />

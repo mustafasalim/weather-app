@@ -65,8 +65,8 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                   size={32}
                 />
               </div>
-              <div className="flex items-center justify-center p-6">
-                {children}
+              <div className="flex flex-col py-2 items-center justify-center p-6">
+                <span onClick={() => onClose()}>{children}</span>
               </div>
             </div>
           </motion.div>

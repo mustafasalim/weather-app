@@ -20,9 +20,9 @@ const Button = (props: ButtonProps) => {
     <button
       onClick={onClick}
       className={classNames(
-        "p-3 rounded-lg flex items-center justify-center gap-x-2 transition-all relative whitespace-nowrap",
+        " rounded-lg flex items-center justify-center gap-x-2 transition-all relative whitespace-nowrap",
         {
-          "text-base-white bg-product-blue-light text-heading-xs hover:bg-product-blue-light/65":
+          "text-base-white p-3 bg-product-blue-light text-heading-xs hover:bg-product-blue-light/65":
             variant === "primary",
           "text-base-white bg-none text-heading-xs": variant === "default",
         }

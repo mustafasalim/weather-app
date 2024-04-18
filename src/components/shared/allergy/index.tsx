@@ -9,7 +9,7 @@ interface AllergyProps {
 const Allergy = (props: AllergyProps) => {
   const { title, level, img } = props
   return (
-    <article className={classNames("w-56 flex flex-col py-4  rounded-lg")}>
+    <article className={classNames("w-56 flex flex-col py-4  rounded-lg  ")}>
       <div className="flex items-center w-full justify-between">
         <div className="w-20 h-20 overflow-hidden flex ">
           <img
