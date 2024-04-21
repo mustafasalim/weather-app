@@ -43,7 +43,7 @@ const CurrentWeather = () => {
           {data && (
             <div className="w-full flex items-center justify-between relative">
               <div className="w-full flex flex-col p-6">
-                <div className="lg:text-heading-xl md:text-heading-lg text-heading-sm   dark:text-base-gray-100">
+                <div className="lg:text-heading-xl md:text-heading-lg text-heading-sm text-base-gray-100">
                   {data?.name}, {data?.sys?.country}
                 </div>
                 <div className="lg:text-lg md:text-md text-xs text-base-gray-100">
